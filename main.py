@@ -49,13 +49,16 @@ def main():
     text_file = open('text_file.txt', 'a+')
 
     for f in os.listdir(images_folder):
-        i += 1
-        print(f"FILE {i}...")
-        image_file = os.path.join(images_folder, f)
-        image_text = image_to_text(image_file)
-        print(f"TEXT: {image_text}")
-        text_file.write(f"DATA FROM FILE {f}\n\n{image_text}\n\n\n\n")
-        print(f"FILE {i} complete")
+        try:
+            i += 1
+            print(f"FILE {i}...")
+            image_file = os.path.join(images_folder, f)
+            image_text = image_to_text(image_file)
+            print(f"TEXT: {image_text}")
+            text_file.write(f"DATA FROM FILE {f}\n\n{image_text}\n\n\n\n")
+            print(f"FILE {i} complete")
+        except:
+            print ("could not convert file")
 
     text_file.close()
 
